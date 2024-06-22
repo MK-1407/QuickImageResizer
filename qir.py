@@ -36,7 +36,9 @@ def resize_to_target(targetKB, image):
         img_width, img_height = target_image.size
     buffer.seek(0)
     return buffer
-
+@app.get('/')
+def root():
+    return {'live':'true'}
 @app.post("/resize-image/")
 async def resize_image(file: UploadFile = File(...), width: int = 800, height: int = 600, quality: int = 50, targetKB: int = 0):
     # Open the uploaded image file
