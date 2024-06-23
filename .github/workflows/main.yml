@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Render Service
-        run: curl -sSf https://your-app-name.onrender.com > /dev/null
+        run: curl -sSf https://quickimageresizer.onrender.com/ > /dev/null
