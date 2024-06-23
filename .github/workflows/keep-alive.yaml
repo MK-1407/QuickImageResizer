@@ -1,0 +1,12 @@
+name: Keep Service Awake
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Runs every 5 minutes. Adjust as needed.
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Service
+        run: curl -sSf https://quickimageresizer.onrender.com/ > /dev/null
