@@ -1,0 +1,12 @@
+name: Keep Service Awake 2
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Runs every 5 minutes. Adjust as needed.
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Service
+        run: curl -sSf https://your-app-name.onrender.com > /dev/null
