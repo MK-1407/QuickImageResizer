@@ -23,6 +23,6 @@ jobs:
              echo "rows = soup.find_all('td')" >> main.py &&
              echo "if len(rows) > 10:" >> main.py &&
              echo "  yag = yagmail.SMTP(${{ secrets.SMTP_MAIL }},${{ secrets.SMTP_PASSWORD }})" >> main.py &&
-             echo "  yag.send(to=secrets.SMTP_TO_MAIL,subject='BSNL JOB ALERT', contents='BSNL NEW JOBS ARE THERE goto\nhttps://www.bsnl.co.in/opencms/bsnl/BSNL/about_us/hrd/jobs.html'" >> main.py &&
+             echo "  yag.send(to=${{secrets.SMTP_TO_MAIL}},subject='BSNL JOB ALERT', contents='BSNL NEW JOBS ARE THERE goto\nhttps://www.bsnl.co.in/opencms/bsnl/BSNL/about_us/hrd/jobs.html'" >> main.py &&
              cat main.py &&
              python main.py
