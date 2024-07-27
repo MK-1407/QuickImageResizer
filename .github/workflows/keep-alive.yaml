@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Python
-        run: sudo apt install python
+        run: sudo apt install python3
       - name: Install BeautifulSoup
         run: python -m pip install bs4 requests
       - name: Run commands
