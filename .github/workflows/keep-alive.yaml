@@ -1,8 +1,9 @@
-name: Keep Service Awake 2
+name: Alert
 
 on:
   schedule:
-    - cron: '*/360 * * * *'  # Runs every 5 minutes. Adjust as needed.
+    - cron: '*/360 * * * *' # Runs every 6 hours. Adjust as needed.
+  workflow_dispatch:
 
 jobs:
   ping-render:
