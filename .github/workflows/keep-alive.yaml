@@ -1,1 +1,26 @@
+name: Keep Service Awake 2
 
+on:
+  schedule:
+    - cron: '*/360 * * * *'  # Runs every 5 minutes. Adjust as needed.
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Python
+        run: sudo apt install python
+      - name: Install BeautifulSoup
+        run: python -m pip install bs4 requests
+      - name: Run commands
+        run: echo "import requests" > main.py
+             echo "import yagmail" >> main.py
+             echo "from bs4 import BeautifulSoup as bs" >> main.py
+             echo "res = requests.get('https://www.bsnl.co.in/opencms/bsnl/BSNL/about_us/hrd/jobs.html')" >> main.py
+             echo "soup = bs(res.text,'html.parser')" >> main.py
+             echo "table = soup.find('table')" >> main.py
+             echo "rows = soup.find_all('td')" >> main.py
+             echo "if len(rows) > 10:" >> main.py
+             echo "  yag = yagmail.SMTP(${{ secrets.SMTP_MAIL }},${{ secrets.SMTP_PASSWORD }})" >> main.py
+             echo "  yag.send(to=secrets.SMTP_TO_MAIL,subject='BSNL JOB ALERT', contents='BSNL NEW JOBS ARE THERE goto\nhttps://www.bsnl.co.in/opencms/bsnl/BSNL/about_us/hrd/jobs.html" >> main.py
+             python main.py
