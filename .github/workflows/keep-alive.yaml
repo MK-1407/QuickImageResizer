@@ -1,8 +1,6 @@
 name: Alert
 
 on:
-  schedule:
-    - cron: '*/360 * * * *' # Runs every 6 hours. Adjust as needed.
   workflow_dispatch:
 
 jobs:
